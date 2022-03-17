@@ -3,7 +3,6 @@ package com.alfuvedan.hrmanager.data;
 import java.util.Locale;
 
 public class EmployeeGenerator {
-    //TODO fill arrays with names, and complete generation algorithm
 
     private static final String[] FIRST_NAMES = {
 
@@ -22,7 +21,7 @@ public class EmployeeGenerator {
         throw new RuntimeException("This class should not be instantiated");
     }
 
-    private String getEmail(String firstName, String lastName) {
+    private static String getEmail(String firstName, String lastName) {
         return String.format(Locale.ROOT,"%s%s@%s",
                 firstName.toLowerCase(Locale.ROOT), lastName.toLowerCase(Locale.ROOT), EMAIL_DOMAIN);
     }

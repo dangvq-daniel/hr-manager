@@ -1,7 +1,13 @@
 package com.alfuvedan.hrmanager.data;
 
+import androidx.annotation.NonNull;
+
 import java.util.Objects;
 
+/**
+ * This class contains information about an employee's job. It was made to reduce the amount of
+ * parameters in the <code>Employee</code> constructor
+ */
 public class JobInfo {
     private String department;
 
@@ -52,5 +58,15 @@ public class JobInfo {
     @Override
     public int hashCode() {
         return Objects.hash(department, title, salary);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "JobInfo{" +
+                "department='" + department + '\'' +
+                ", title='" + title + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }

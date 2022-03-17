@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HR Manager</string>
+    <string name="email_addr_hint">Email Address</string>
+    <string name="passwd_hint">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="forgot_passwd">Forgot Password?</string>
+    <string name="register">Register</string>
 </resources>

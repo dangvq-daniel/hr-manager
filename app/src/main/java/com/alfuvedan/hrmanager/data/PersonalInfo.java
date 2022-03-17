@@ -1,7 +1,13 @@
 package com.alfuvedan.hrmanager.data;
 
+import androidx.annotation.NonNull;
+
 import java.util.Objects;
 
+/**
+ * This class contains an employee's personal information. It was made to reduce the amount of
+ * parameters in the <code>Employee</code> constructor
+ */
 public class PersonalInfo {
 
     private String firstName, lastName, email;
@@ -51,5 +57,15 @@ public class PersonalInfo {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, lastName, email);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "PersonalInfo{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
