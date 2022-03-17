@@ -14,7 +14,7 @@ public class JobInfo {
     private String title;
     private double salary;
 
-    public JobInfo(String department, String title, double salary) {
+    public JobInfo(@NonNull String department, @NonNull String title, double salary) {
         this.department = department;
         this.title = title;
         this.salary = salary;
@@ -24,7 +24,7 @@ public class JobInfo {
         return this.department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(@NonNull String department) {
         this.department = department;
     }
 
@@ -32,7 +32,7 @@ public class JobInfo {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NonNull String title) {
         this.title = title;
     }
 

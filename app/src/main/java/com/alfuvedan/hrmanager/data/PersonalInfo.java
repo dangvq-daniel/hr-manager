@@ -12,7 +12,7 @@ public class PersonalInfo {
 
     private String firstName, lastName, email;
 
-    public PersonalInfo(String firstName, String lastName, String email) {
+    public PersonalInfo(@NonNull String firstName, @NonNull String lastName, @NonNull String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,7 +22,7 @@ public class PersonalInfo {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(@NonNull String firstName) {
         this.firstName = firstName;
     }
 
@@ -30,7 +30,7 @@ public class PersonalInfo {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(@NonNull String lastName) {
         this.lastName = lastName;
     }
 
@@ -42,7 +42,7 @@ public class PersonalInfo {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
 

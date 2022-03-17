@@ -2,7 +2,9 @@ package com.alfuvedan.hrmanager.data;
 
 import androidx.annotation.NonNull;
 
-public class Employee implements Comparable<Employee> {
+import com.alfuvedan.hrmanager.data.save.ISavableData;
+
+public class Employee implements Comparable<Employee>, ISavableData<Employee> {
     private static long lastID = 1;
 
     private static int sortMode = EmployeeSortModes.BY_ID, sortOrder = EmployeeSortModes.ASCENDING;
@@ -40,7 +42,7 @@ public class Employee implements Comparable<Employee> {
         return this.personalInfo.getFirstName();
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(@NonNull String firstName) {
         this.personalInfo.setFirstName(firstName);
     }
 
@@ -48,7 +50,7 @@ public class Employee implements Comparable<Employee> {
         return this.personalInfo.getLastName();
     }
 
-    public void setLastName(String firstName) {
+    public void setLastName(@NonNull String firstName) {
         this.personalInfo.setLastName(firstName);
     }
 
@@ -60,7 +62,7 @@ public class Employee implements Comparable<Employee> {
         return this.personalInfo.getEmail();
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.personalInfo.setEmail(email);
     }
 
@@ -68,7 +70,7 @@ public class Employee implements Comparable<Employee> {
         return this.jobInfo.getDepartment();
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(@NonNull String department) {
         this.jobInfo.setDepartment(department);
     }
 
@@ -76,7 +78,7 @@ public class Employee implements Comparable<Employee> {
         return this.jobInfo.getTitle();
     }
 
-    public void setJobTitle(String title) {
+    public void setJobTitle(@NonNull String title) {
         this.jobInfo.setTitle(title);
     }
 
@@ -129,5 +131,17 @@ public class Employee implements Comparable<Employee> {
                 ", personalInfo=" + personalInfo +
                 ", jobInfo=" + jobInfo +
                 '}';
+    }
+
+    @NonNull
+    @Override
+    public Employee initFromLine(@NonNull String line) {
+        return null; //TODO
+    }
+
+    @NonNull
+    @Override
+    public String getSaveString() {
+        return null; //TODO
     }
 }

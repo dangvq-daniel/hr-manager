@@ -1,5 +1,7 @@
 package com.alfuvedan.hrmanager.data;
 
+import androidx.annotation.NonNull;
+
 import java.util.Locale;
 
 public class EmployeeGenerator {
@@ -21,7 +23,7 @@ public class EmployeeGenerator {
         throw new RuntimeException("This class should not be instantiated");
     }
 
-    private static String getEmail(String firstName, String lastName) {
+    private static String getEmail(@NonNull String firstName, @NonNull String lastName) {
         return String.format(Locale.ROOT,"%s%s@%s",
                 firstName.toLowerCase(Locale.ROOT), lastName.toLowerCase(Locale.ROOT), EMAIL_DOMAIN);
     }
