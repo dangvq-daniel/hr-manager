@@ -3,6 +3,8 @@ package com.alfuvedan.hrmanager.data;
 import java.util.Locale;
 
 public class EmployeeGenerator {
+    //TODO fill arrays with names, and complete generation algorithm
+
     private static final String[] FIRST_NAMES = {
 
     };

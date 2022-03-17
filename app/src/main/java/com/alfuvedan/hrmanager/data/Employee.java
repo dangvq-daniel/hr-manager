@@ -15,6 +15,7 @@ public class Employee implements Comparable<Employee> {
         this.jobInfo = jobInfo;
     }
 
+    //TODO getters, setters, sort modes, etc
 
     @Override
     public int compareTo(Employee employee) {
