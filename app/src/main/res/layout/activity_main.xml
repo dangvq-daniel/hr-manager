@@ -56,7 +56,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="#0ED689"
-        android:onClick="testStuff"
+        android:onClick="userLogin"
         android:text="@string/login_btn"
         android:textColor="#ffffff"
         android:textSize="26sp"
