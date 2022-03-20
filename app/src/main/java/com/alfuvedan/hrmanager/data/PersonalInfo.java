@@ -12,6 +12,10 @@ public class PersonalInfo {
 
     private String firstName, lastName, email;
 
+    public PersonalInfo() {
+        this("", "", "");
+    }
+
     public PersonalInfo(@NonNull String firstName, @NonNull String lastName, @NonNull String email) {
         this.firstName = firstName;
         this.lastName = lastName;

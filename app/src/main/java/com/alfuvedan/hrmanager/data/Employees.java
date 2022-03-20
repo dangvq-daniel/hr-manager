@@ -21,9 +21,9 @@ public class Employees {
                 {"Jasmine", "Martin", "jasmine.martin@alfuvedan.com", "Corporate", "CEO", "300000"},
         };
 
-        for(int i = 0; i < info.length; i++){
-            Employee e = new Employee(new PersonalInfo(info[i][0], info[i][1], info[i][2]),
-                    new JobInfo(info[i][3], info[i][4], Double.parseDouble(info[i][5])));
+        for (String[] strings : info) {
+            Employee e = new Employee(new PersonalInfo(strings[0], strings[1], strings[2]),
+                    new JobInfo(strings[3], strings[4], Double.parseDouble(strings[5])));
             es.put(e.getID(), e);
         }
     }
@@ -34,7 +34,9 @@ public class Employees {
 
     public void removeEmployee(long id){
         if(es.containsKey(id))
-            es.remove(id);
+            throw new IllegalArgumentException("There is no employee with id " + id);
+
+        es.remove(id);
     }
 
 }

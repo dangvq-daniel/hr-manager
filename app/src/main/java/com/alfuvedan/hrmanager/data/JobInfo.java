@@ -14,6 +14,10 @@ public class JobInfo {
     private String title;
     private double salary;
 
+    public JobInfo() {
+        this("", "", 0.0);
+    }
+
     public JobInfo(@NonNull String department, @NonNull String title, double salary) {
         this.department = department;
         this.title = title;

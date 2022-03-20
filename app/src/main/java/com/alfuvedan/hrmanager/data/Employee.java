@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.alfuvedan.hrmanager.data.save.ISavableData;
 
-public class Employee implements Comparable<Employee>, ISavableData<Employee> {
+public class Employee implements Comparable<Employee>, ISavableData {
     private static long lastID = 1;
 
     private static int sortMode = EmployeeSortModes.BY_ID, sortOrder = EmployeeSortModes.ASCENDING;
@@ -135,13 +135,15 @@ public class Employee implements Comparable<Employee>, ISavableData<Employee> {
 
     @NonNull
     @Override
-    public Employee initFromLine(@NonNull String line) {
-        return null; //TODO
-    }
-
-    @NonNull
-    @Override
-    public String getSaveString() {
-        return null; //TODO
+    public String[] getSaveData() {
+        return new String[] {
+                String.valueOf(this.getID()),
+                this.getFirstName(),
+                this.getLastName(),
+                this.getEmail(),
+                this.getDepartment(),
+                this.getJobTitle(),
+                String.valueOf(this.getSalary())
+        };
     }
 }
