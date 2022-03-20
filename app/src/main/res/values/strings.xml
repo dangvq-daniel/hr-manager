@@ -5,4 +5,5 @@
     <string name="login_btn">Login</string>
     <string name="forgot_passwd">Forgot Password?</string>
     <string name="register">Register</string>
+    <string name="search_title">Enter an employee...</string>
 </resources>
