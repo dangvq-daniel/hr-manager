@@ -4,22 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
-import com.alfuvedan.hrmanager.data.Employee;
-import com.alfuvedan.hrmanager.data.JobInfo;
-import com.alfuvedan.hrmanager.data.LoginInfo;
-import com.alfuvedan.hrmanager.data.LoginInfoSaver;
-import com.alfuvedan.hrmanager.data.PersonalInfo;
-import com.alfuvedan.hrmanager.data.save.DataSaver;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.alfuvedan.hrmanager.data.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,34 +20,12 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.password);
         LoginInfoSaver.loginAdd(new LoginInfo("timhortons@icecap.com","timbits"));
         LoginInfoSaver.loginAdd(new LoginInfo("burgerking@bestburger.com","justjkitsucks"));
-    }
 
-    public void testStuff(View view) {
-        List<Employee> employees = new ArrayList<>();
+        Employees.getEmployeesFromFile(this);
 
-        employees.add(new Employee(new PersonalInfo("Tim", "Horton", "timhortons@testdomain.com"),
-                new JobInfo("Marketing", "Product Marketing Manager", 51234.56)));
-
-        employees.add(new Employee(new PersonalInfo("Mike", "Donaldson", "mcdonalds@testdomain.com"),
-                new JobInfo("Health", "Doctor", 123456.78)));
-
-        employees.add(new Employee(new PersonalInfo("Wendy", "TheRestaurant", "wendys@testdomain.com"),
-                new JobInfo("Finance", "Financial Analyst", 71717.17)));
-
-        employees.add(new Employee(new PersonalInfo("Burger", "King", "burgerking@testdomain.com"),
-                new JobInfo("Janitor", "Janitor", 33333.33)));
-
-        try {
-            DataSaver.saveData(new File(this.getDataDir(), "employees.csv"), employees);
+        for(Employee employee : Employees.getAllEmployees()) {
+            System.out.println(employee);
         }
-        catch (IOException exc) {
-            Toast.makeText(this, exc.getMessage(), Toast.LENGTH_SHORT).show();
-            exc.printStackTrace();
-
-            return;
-        }
-
-        Toast.makeText(this, "Nice", Toast.LENGTH_SHORT).show();
     }
 
     public void userLogin(View view) {
@@ -78,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.equals(email)) { //if user provides wrong type of email address ask again
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) { //if user provides wrong type of email address ask again
             editTextEmail.setError("Please provide valid email");
             editTextEmail.requestFocus();
             return;
         }
 
         if (!LoginInfoSaver.loginVerify(new LoginInfo(email,password))){
-            Toast.makeText(this,"Not Nice",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
         }
     }
 }

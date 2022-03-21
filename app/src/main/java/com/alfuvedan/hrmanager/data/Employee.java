@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import com.alfuvedan.hrmanager.data.save.ISavableData;
 
+import java.util.Locale;
+
 public class Employee implements Comparable<Employee>, ISavableData {
     private static long lastID = 1;
 
@@ -21,6 +23,24 @@ public class Employee implements Comparable<Employee>, ISavableData {
         this.id = lastID++;
         this.personalInfo = personalInfo;
         this.jobInfo = jobInfo;
+    }
+
+    public Employee(String[] csvRow) {
+        if(csvRow.length != this.getSaveData().length)
+            throw new IllegalArgumentException(String.format(Locale.ROOT,
+                    "There may only be %d entries in this row (Found %d)",
+                    this.getSaveData().length, csvRow.length));
+
+        this.id = Integer.parseInt(csvRow[0]);
+        lastID = Math.max(this.id + 1, lastID);
+
+        String firstName = csvRow[1], lastName = csvRow[2], email = csvRow[3];
+        this.personalInfo = new PersonalInfo(firstName, lastName, email);
+
+        String department = csvRow[4], jobTitle = csvRow[5];
+        double salary = Double.parseDouble(csvRow[6]);
+
+        this.jobInfo = new JobInfo(department, jobTitle, salary);
     }
 
     public static void setSortMode(int sortMode, int sortOrder) {

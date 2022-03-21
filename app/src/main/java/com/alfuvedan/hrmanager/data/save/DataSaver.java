@@ -22,5 +22,28 @@ public class DataSaver {
             byte[] dataArr = dataRow.toString().getBytes();
             outStream.write(dataArr);
         }
+
+        outStream.close();
+    }
+
+    public static <T extends ISavableData> Collection<T> readData(File saveFile, IDataConverter<T> getData) throws IOException {
+        Collection<T> collection = new ArrayList<>();
+
+        if(!saveFile.exists())
+            return collection;
+
+        FileInputStream inStream = new FileInputStream(saveFile);
+        InputStreamReader inStreamReader = new InputStreamReader(inStream);
+        BufferedReader bufReader = new BufferedReader(inStreamReader);
+
+        String line;
+        while((line = bufReader.readLine()) != null) {
+            String[] row = line.split(",");
+            collection.add(getData.getFromCSVRow(row));
+        }
+
+        bufReader.close();
+
+        return collection;
     }
 }
