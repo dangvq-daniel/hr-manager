@@ -26,7 +26,7 @@ public class Employee implements Comparable<Employee>, ISavableData {
     }
 
     public Employee(String[] csvRow) {
-        if(csvRow.length != this.getSaveData().length)
+        if(csvRow.length != 7)
             throw new IllegalArgumentException(String.format(Locale.ROOT,
                     "There may only be %d entries in this row (Found %d)",
                     this.getSaveData().length, csvRow.length));

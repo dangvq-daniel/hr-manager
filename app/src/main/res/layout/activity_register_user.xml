@@ -21,36 +21,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/email"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:ems="10"
-        android:hint="@string/name_hint"
-        android:inputType="text"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/banner" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
         android:hint="@string/email_addr_hint"
         android:inputType="textEmailAddress"
 
+
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullName" />
+        app:layout_constraintTop_toBottomOf="@+id/banner" />
 
     <EditText
         android:id="@+id/password"
