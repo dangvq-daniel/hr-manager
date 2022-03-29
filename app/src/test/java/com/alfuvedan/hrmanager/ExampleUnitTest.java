@@ -79,18 +79,4 @@ public class ExampleUnitTest {
             assertEquals(expected[i], employees.get(i).getFirstName());
         }
     }
-
-    @Test
-    public void login_info_test_1() {
-        LoginInfoSaver.loginAdd(new LoginInfo("timhortons@icecap.com","timbits"));
-        LoginInfoSaver.loginAdd(new LoginInfo("mcdonaldson@mcnugget.com", "icecream"));
-        LoginInfoSaver.loginAdd(new LoginInfo("wendy@wendy.com","hernameiswendy"));
-        LoginInfoSaver.loginAdd(new LoginInfo("burgerking@bestburger.com","justjkitsucks"));
-        boolean isVerifed = LoginInfoSaver.loginVerify(new LoginInfo("timhortons@icecap.com","timbits"));
-        boolean isNotVerified = LoginInfoSaver.loginVerify(new LoginInfo("mcdonaldson@mcnugget.com","icecramp"));
-        boolean isNotVerifiedToo = LoginInfoSaver.loginVerify(new LoginInfo("wendnesday@wend.com", "hernameiswendy"));
-        assertTrue(isVerifed);
-        assertFalse(isNotVerified);
-        assertFalse(isNotVerifiedToo);
-    }
 }
