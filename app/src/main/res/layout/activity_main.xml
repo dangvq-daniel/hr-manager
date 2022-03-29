@@ -87,6 +87,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#0DC578"
+        android:onClick="goToRegisterActivity"
         android:text="@string/register"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

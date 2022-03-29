@@ -1,6 +1,8 @@
 package com.alfuvedan.hrmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,6 +13,7 @@ import com.alfuvedan.hrmanager.data.*;
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
+//    public static final String REGISTER_ACTIVITY = "com.alfuvedan.hrmanager.RegisterUserActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToRegisterActivity(View view) {
-
+        Intent intent = new Intent(this, RegisterUserActivity.class);
+        Button button = findViewById(R.id.register);
+        startActivity(intent);
     }
 }
