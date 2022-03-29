@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
-        LoginInfoSaver.loginAdd(new LoginInfo("timhortons@icecap.com","timbits"));
-        LoginInfoSaver.loginAdd(new LoginInfo("burgerking@bestburger.com","justjkitsucks"));
+        LoginInfoSaver.loginAdd(new LoginInfo(AccessTiers.TIER_1, "timhortons@icecap.com","timbits"));
+        LoginInfoSaver.loginAdd(new LoginInfo(AccessTiers.TIER_2, "burgerking@bestburger.com","justjkitsucks"));
 
         Employees.getEmployeesFromFile(this);
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!LoginInfoSaver.loginVerify(new LoginInfo(email,password))) {
+        if (!LoginInfoSaver.loginVerify(new LoginInfo(AccessTiers.LAST_TIER, email,password))) {
             Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
         }
     }
