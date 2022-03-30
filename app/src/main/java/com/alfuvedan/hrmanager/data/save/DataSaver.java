@@ -1,10 +1,13 @@
 package com.alfuvedan.hrmanager.data.save;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.io.*;
 import java.util.*;
 
 public class DataSaver {
-    public static <T extends ISavableData> void saveData(File saveFile, Collection<T> dataCollection) throws IOException {
+    public static <T extends ISavableData> void saveData(@NonNull File saveFile, @NonNull Collection<T> dataCollection) throws IOException {
         if(saveFile.createNewFile())
             System.out.println("Created file " + saveFile);
 
@@ -26,7 +29,11 @@ public class DataSaver {
         outStream.close();
     }
 
-    public static <T extends ISavableData> Collection<T> readData(File saveFile, IDataConverter<T> getData) throws IOException {
+    public static <T extends ISavableData> void saveData(@NonNull File saveFile, @NonNull T data) throws IOException {
+        saveData(saveFile, Collections.singletonList(data));
+    }
+
+    public static <T extends ISavableData> Collection<T> readData(@NonNull File saveFile, @NonNull IDataConverter<T> getData) throws IOException {
         Collection<T> collection = new ArrayList<>();
 
         if(!saveFile.exists())
@@ -45,5 +52,19 @@ public class DataSaver {
         bufReader.close();
 
         return collection;
+    }
+
+    public static @Nullable <T extends ISavableData> T readSingleData(@NonNull File saveFile, @NonNull IDataConverter<T> getData) throws IOException {
+        Collection<T> data = readData(saveFile, getData);
+
+        if(data.isEmpty())
+            return null;
+
+        return data.iterator().next();
+    }
+
+    public static void clearData(@NonNull File saveFile) {
+        if(saveFile.delete())
+            System.out.println("Deleted file " + saveFile);
     }
 }

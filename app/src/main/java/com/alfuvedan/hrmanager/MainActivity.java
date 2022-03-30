@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.alfuvedan.hrmanager.data.*;
+import com.alfuvedan.hrmanager.session.SessionInfo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
 
         LoginInfoSaver.getLoginInfoFromFile(this);
+        SessionInfo.loadSessionData(this);
 
-        for(Employee employee : Employees.getAllEmployees()) {
-            System.out.println(employee);
-        }
+        if(SessionInfo.isLoggedIn())
+            this.goToEmployeeTableActivity();
     }
 
     public void userLogin(View view) {
@@ -50,16 +51,24 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!LoginInfoSaver.loginVerify(new LoginInfo(AccessTiers.LAST_TIER, email,password))) {
+        LoginInfo info = new LoginInfo(AccessTiers.LAST_TIER, email,password);
+
+        if (!LoginInfoSaver.loginVerify(info)) {
             Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
             return;
         }
 
-        System.out.println("Logged In!");
+        SessionInfo.login(this, new LoginInfo(LoginInfoSaver.getAccessTier(info), info.getEmail(), info.getPassword()));
+        this.goToEmployeeTableActivity();
     }
 
     public void goToRegisterActivity(View view) {
         Intent intent = new Intent(this, RegisterUserActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToEmployeeTableActivity() {
+        Intent intent = new Intent(this, EmployeeTableActivity.class);
         startActivity(intent);
     }
 }
