@@ -35,7 +35,7 @@ public class Employees {
         return es.get(id);
     }
 
-    public static Collection<Employee> getAllEmployees() {
+    public static Iterable<Employee> getAllEmployees() {
         return es.values();
     }
 

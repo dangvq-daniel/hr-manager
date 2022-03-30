@@ -21,10 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
-        LoginInfoSaver.loginAdd(new LoginInfo(AccessTiers.TIER_1, "timhortons@icecap.com","timbits"));
-        LoginInfoSaver.loginAdd(new LoginInfo(AccessTiers.TIER_2, "burgerking@bestburger.com","justjkitsucks"));
 
-        Employees.getEmployeesFromFile(this);
+        LoginInfoSaver.getLoginInfoFromFile(this);
 
         for(Employee employee : Employees.getAllEmployees()) {
             System.out.println(employee);
@@ -54,12 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (!LoginInfoSaver.loginVerify(new LoginInfo(AccessTiers.LAST_TIER, email,password))) {
             Toast.makeText(this,"Incorrect email or password",Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        System.out.println("Logged In!");
     }
 
     public void goToRegisterActivity(View view) {
         Intent intent = new Intent(this, RegisterUserActivity.class);
-        Button button = findViewById(R.id.register);
         startActivity(intent);
     }
 }

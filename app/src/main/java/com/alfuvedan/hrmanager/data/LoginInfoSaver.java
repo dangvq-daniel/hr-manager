@@ -29,11 +29,29 @@ public class LoginInfoSaver
         return false;
     }
 
+    public static boolean emailExists(@NonNull String email) {
+        for(LoginInfo login : loginList) {
+            if(login.getEmail().equalsIgnoreCase(email))
+                return true;
+        }
+
+        return false;
+    }
+
+    public static int getAccessTier(@NonNull LoginInfo loginInfo) {
+        for(LoginInfo login : loginList) {
+            if(loginInfo.equals(login))
+                return login.getAcessTier();
+        }
+
+        throw new IllegalArgumentException("Login info not found in list");
+    }
+
     private static File getSaveFile(@NonNull Context context) {
         return new File(context.getDataDir(), SAVE_FILE_NAME);
     }
 
-    private static void saveLoginInfo(@NonNull Context context) {
+    public static void saveLoginInfo(@NonNull Context context) {
         try {
             DataSaver.saveData(getSaveFile(context), loginList);
         }
@@ -42,7 +60,7 @@ public class LoginInfoSaver
         }
     }
 
-    private static void getLoginInfoFromFile(@NonNull Context context) {
+    public static void getLoginInfoFromFile(@NonNull Context context) {
         try {
             loginList.clear();
             Collection<LoginInfo> savedLoginInfo = DataSaver.readData(getSaveFile(context), LoginInfo::new);
