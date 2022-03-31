@@ -24,7 +24,6 @@
         android:id="@+id/email"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
 
         android:ems="10"
         android:hint="@string/email_addr_hint"
@@ -56,16 +55,14 @@
         android:id="@+id/registerUser"
         android:layout_width="380dp"
         android:layout_height="70dp"
-        android:layout_marginTop="24dp"
         android:backgroundTint="#0ED689"
+        android:onClick="onRegisterUser"
         android:text="@string/reg_user_btn"
         android:textColor="#ffffff"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:onClick="onRegisterUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
