@@ -19,6 +19,7 @@
     <string name="logout_btn">Logout</string>
     <string name="search_btn">Search</string>
     <string name="create_employee_btn">Add Employee</string>
+    <string name="edit_employee_btn">Edit Employee</string>
     <string name="dashboard">Dashboard</string>
     <string name="sort">Sort</string>
     <string name="first_name_hint">First Name</string>

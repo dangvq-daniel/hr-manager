@@ -1,6 +1,7 @@
 package com.alfuvedan.hrmanager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,6 +15,8 @@ import com.alfuvedan.hrmanager.session.SessionInfo;
 import java.util.*;
 
 public class EmployeeTableActivity extends AppCompatActivity {
+
+    public static final String EMPLOYEE_ID_INTENT = "com.alfuvedan.hrmanager.employee_id";
 
     private TableLayout employeeTable;
     private Spinner spinner;
@@ -102,6 +105,15 @@ public class EmployeeTableActivity extends AppCompatActivity {
         editButton.setText(R.string.edit_label);
         editButton.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
 
+        editButton.setOnClickListener(btn -> {
+            if(SessionInfo.getLoginInfo() != null && SessionInfo.getLoginInfo().getAcessTier() < AccessTiers.TIER_2) {
+                Toast.makeText(this, "Only Tier " + AccessTiers.TIER_2 + " and above users can edit employee data", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            goToEmployeeEditActivity(employee);
+        });
+
         tableRow.addView(editButton);
 
         this.employeeTable.addView(tableRow);
@@ -122,7 +134,22 @@ public class EmployeeTableActivity extends AppCompatActivity {
     }
 
     public void onAddEmployee(View view) {
+        if(SessionInfo.getLoginInfo() != null && SessionInfo.getLoginInfo().getAcessTier() < AccessTiers.TIER_2) {
+            Toast.makeText(this, "Only Tier " + AccessTiers.TIER_2 + " and above users can edit employee data", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(this, EmployeeEditActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToEmployeeEditActivity(@Nullable Employee employee) {
+        Intent intent = new Intent(this, EmployeeEditActivity.class);
+
+        if(employee != null) {
+            intent.putExtra(EMPLOYEE_ID_INTENT, employee.getID());
+        }
+
         startActivity(intent);
     }
 }

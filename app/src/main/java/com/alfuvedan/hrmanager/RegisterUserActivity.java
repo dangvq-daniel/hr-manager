@@ -69,7 +69,6 @@ public class RegisterUserActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
-
         LoginInfoSaver.saveLoginInfo(this);
     }
 }
