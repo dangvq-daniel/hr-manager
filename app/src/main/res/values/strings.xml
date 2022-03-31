@@ -16,4 +16,8 @@
     <string name="job_label">Occupation</string>
     <string name="salary_label">Salary</string>
     <string name="edit_label">Edit</string>
+    <string name="logout_btn">Logout</string>
+    <string name="search_btn">Search</string>
+    <string name="create_employee_btn">Add Employee</string>
+    <string name="dashboard">Dashboard</string>
 </resources>
