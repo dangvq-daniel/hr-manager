@@ -9,7 +9,7 @@ import java.util.Locale;
 public class Employee implements Comparable<Employee>, ISavableData {
     private static long lastID = 1;
 
-    private static int sortMode = EmployeeSortModes.BY_FIRST_NAME, sortOrder = EmployeeSortModes.ASCENDING;
+    private static int sortMode = EmployeeSortModes.BY_ID, sortOrder = EmployeeSortModes.ASCENDING;
 
     private final long id;
 
