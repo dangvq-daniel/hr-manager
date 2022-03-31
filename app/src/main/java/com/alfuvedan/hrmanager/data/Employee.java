@@ -102,6 +102,10 @@ public class Employee implements Comparable<Employee>, ISavableData {
         this.jobInfo.setTitle(title);
     }
 
+    public String getJobString() {
+        return this.jobInfo.getJobString();
+    }
+
     public double getSalary() {
         return this.jobInfo.getSalary();
     }

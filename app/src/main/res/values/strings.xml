@@ -10,5 +10,10 @@
     <string name="reg_user_btn">REGISTER USER</string>
     <string name="search_title">Enter an employee…</string>
     <string name="access_tier_hint">Access Tier</string>
+    <string name="id_label">ID</string>
     <string name="name_label">Name</string>
+    <string name="email_label">Email</string>
+    <string name="job_label">Occupation</string>
+    <string name="salary_label">Salary</string>
+    <string name="edit_label">Edit</string>
 </resources>

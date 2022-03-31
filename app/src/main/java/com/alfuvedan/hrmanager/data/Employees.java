@@ -35,8 +35,8 @@ public class Employees {
         return es.get(id);
     }
 
-    public static Iterable<Employee> getAllEmployees() {
-        return es.values();
+    public static ArrayList<Employee> getAllEmployees() {
+        return new ArrayList<>(es.values());
     }
 
     public static void saveEmployees(@NonNull Context context) {

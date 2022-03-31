@@ -40,6 +40,10 @@ public class JobInfo {
         this.title = title;
     }
 
+    public String getJobString() {
+        return String.format("Department: %s, Title: %s", this.getDepartment(), this.getTitle());
+    }
+
     public double getSalary() {
         return salary;
     }
