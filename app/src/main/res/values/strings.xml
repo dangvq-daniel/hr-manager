@@ -20,4 +20,10 @@
     <string name="search_btn">Search</string>
     <string name="create_employee_btn">Add Employee</string>
     <string name="dashboard">Dashboard</string>
+    <string name="sort">Sort</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="department_hint">Department</string>
+    <string name="title_hint">Job Title</string>
+    <string name="salary_hint">Salary ($)</string>
 </resources>

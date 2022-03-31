@@ -12,6 +12,15 @@ public class EmployeeSortModes {
     public static final int ASCENDING = 1;
     public static final int DESCENDING = -1;
 
+    public static final String[] SORT_MODE_TEXTS = {
+            "Sort by IDs",
+            "Sort by First Names",
+            "Sort by Last Names",
+            "Sort by Department Names",
+            "Sort by Job Titles",
+            "Sort by Salaries"
+    };
+
     /**
      * This constructor is used to prevent the instantiation of this class
      */
