@@ -3,20 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_dashboard.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_employee_edit.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_employee_search.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_employee_table.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/layout/activity_register_user.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ACER/Documents/() York Uni/LE EECS 1022/hr-manager/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.121" />
         <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/drawable/ic_search.xml" value="0.20833333333333334" />
-        <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_employee_edit.xml" value="0.14895833333333333" />
-        <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_employee_search.xml" value="0.25" />
-        <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_employee_table.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
-        <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_register_user.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/layout/activity_search.xml" value="0.1921875" />
         <entry key="..\:/Users/Alaister/Documents/EECS 1022/Project/Phase 3/app/src/main/res/menu/options_menu.xml" value="0.1921875" />
         <entry key="..\:/Users/daniy/AndroidStudioProjects/HRManager2/app/src/main/res/layout/activity_employee_edit.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/daniy/AndroidStudioProjects/HRManager2/app/src/main/res/layout/activity_employee_table.xml" value="0.33" />
         <entry key="..\:/Users/daniy/AndroidStudioProjects/HRManager2/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/daniy/AndroidStudioProjects/HRManager2/app/src/main/res/layout/activity_register_user.xml" value="0.2" />
-        <entry key="..\:/Users/daniy/AndroidStudioProjects/HRManager2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_register_user.xml" value="0.3489543191207962" />
       </map>
