@@ -28,7 +28,6 @@ import java.util.Locale;
 public class EmployeeSearchActivity extends AppCompatActivity {
 
     private EditText search;
-    private Button searchButton;
     private TableLayout table;
     public static final String EMPLOYEE_ID_INTENT = "com.alfuvedan.hrmanager.employee_id";
 
@@ -37,11 +36,11 @@ public class EmployeeSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_search);
 
-        Intent i = this.getIntent();
-
         this.search = findViewById(R.id.searchEditText);
-        this.searchButton = findViewById(R.id.searchBtn);
         this.table = findViewById(R.id.searchTable);
+
+        SessionInfo.loadSessionData(this);
+        Employees.getEmployeesFromFile(this);
     }
 
     public void onSearch(View view){
@@ -55,19 +54,19 @@ public class EmployeeSearchActivity extends AppCompatActivity {
 
         // Only searches for full keywords (no partial searches)
         for(Employee e: emps){
-            if(searchContent.equals(e.getFirstName())){
+            if(searchContent.equalsIgnoreCase(e.getFirstName())){
                 filteredEmps.add(e);
-            } else if (searchContent.equals(e.getLastName())) {
+            } else if (searchContent.equalsIgnoreCase(e.getLastName())) {
                 filteredEmps.add(e);
-            } else if (searchContent.equals(e.getEmail())) {
+            } else if (searchContent.equalsIgnoreCase(e.getEmail())) {
                 filteredEmps.add(e);
             } else if (searchContent.equals(e.getID() + "")) {
                 filteredEmps.add(e);
-            } else if (searchContent.equals(e.getDepartment())) {
+            } else if (searchContent.equalsIgnoreCase(e.getDepartment())) {
                 filteredEmps.add(e);
-            } else if (searchContent.equals(e.getJobString())) {
+            } else if (searchContent.equalsIgnoreCase(e.getJobString())) {
                 filteredEmps.add(e);
-            } else if (searchContent.equals(e.getJobTitle())) {
+            } else if (searchContent.equalsIgnoreCase(e.getJobTitle())) {
                 filteredEmps.add(e);
             } else if (searchContent.equals(e.getSalary() + "")) {
                 filteredEmps.add(e);
@@ -159,7 +158,7 @@ public class EmployeeSearchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void finish(View view){
-        finish();
+    public void finish(View view) {
+        this.finish();
     }
 }
