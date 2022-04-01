@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HRManager">
         <activity
+            android:name=".EmployeeSearchActivity"
+            android:exported="true" />
+        <activity
             android:name=".EmployeeEditActivity"
             android:exported="false" />
         <activity

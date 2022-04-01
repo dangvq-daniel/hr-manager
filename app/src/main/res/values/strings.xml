@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">HR Manager</string>
-    <string name="name_hint">Full Name</string>
-    <string name="employee_num_hint">Employee Number</string>
     <string name="email_addr_hint">Email Address</string>
     <string name="passwd_hint">Password</string>
     <string name="login_btn">Login</string>
-    <string name="forgot_passwd">Forgot Password?</string>
     <string name="register">Register</string>
     <string name="reg_user_btn">REGISTER USER</string>
-    <string name="search_title">Enter an employee…</string>
     <string name="access_tier_hint">Access Tier</string>
     <string name="id_label">ID</string>
     <string name="name_label">Name</string>
@@ -20,11 +16,12 @@
     <string name="search_btn">Search</string>
     <string name="create_employee_btn">Add Employee</string>
     <string name="edit_employee_btn">Edit Employee</string>
-    <string name="dashboard">Dashboard</string>
     <string name="sort">Sort</string>
     <string name="first_name_hint">First Name</string>
     <string name="last_name_hint">Last Name</string>
     <string name="department_hint">Department</string>
     <string name="title_hint">Job Title</string>
     <string name="salary_hint">Salary ($)</string>
+    <string name="enter_an_employee">Enter an Employee...</string>
+    <string name="back">BACK</string>
 </resources>

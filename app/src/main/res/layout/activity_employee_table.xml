@@ -119,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:onClick="goToEmployeeSearchActivity"
         android:text="@string/search_btn"
         app:layout_constraintEnd_toStartOf="@+id/createEmployee"
         app:layout_constraintHorizontal_bias="0.5"

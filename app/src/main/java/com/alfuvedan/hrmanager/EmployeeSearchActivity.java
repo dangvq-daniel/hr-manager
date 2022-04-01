@@ -4,60 +4,90 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.alfuvedan.hrmanager.data.*;
+import com.alfuvedan.hrmanager.data.AccessTiers;
+import com.alfuvedan.hrmanager.data.Employee;
+import com.alfuvedan.hrmanager.data.Employees;
 import com.alfuvedan.hrmanager.session.SessionInfo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 
-public class EmployeeTableActivity extends AppCompatActivity {
+public class EmployeeSearchActivity extends AppCompatActivity {
 
+    private EditText search;
+    private Button searchButton;
+    private TableLayout table;
     public static final String EMPLOYEE_ID_INTENT = "com.alfuvedan.hrmanager.employee_id";
-
-    private TableLayout employeeTable;
-    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_table);
+        setContentView(R.layout.activity_employee_search);
 
-        SessionInfo.loadSessionData(this);
-        Employees.getEmployeesFromFile(this);
+        Intent i = this.getIntent();
 
-        if(!SessionInfo.isLoggedIn())
-            this.goToMainActivity();
-
-        this.employeeTable = findViewById(R.id.employeeTable);
-        this.populateTable();
-
-        this.spinner = findViewById(R.id.sortMode);
-
-        ArrayList<String> options = new ArrayList<>(Arrays.asList(EmployeeSortModes.SORT_MODE_TEXTS));
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(arrayAdapter);
+        this.search = findViewById(R.id.searchEditText);
+        this.searchButton = findViewById(R.id.searchBtn);
+        this.table = findViewById(R.id.searchTable);
     }
 
-    private void populateTable() {
-        this.employeeTable.removeAllViews();
+    public void onSearch(View view){
+        String searchContent = this.search.getText().toString();
+        this.table.removeAllViews();
+        if(searchContent.isEmpty())
+            return;
 
-        ArrayList<Employee> employees = Employees.getAllEmployees();
-        Collections.sort(employees);
+        List<Employee> emps = Employees.getAllEmployees();
+        List<Employee> filteredEmps = new ArrayList<>();
 
-        for(Employee employee : employees) {
+        // Only searches for full keywords (no partial searches)
+        for(Employee e: emps){
+            if(searchContent.equals(e.getFirstName())){
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getLastName())) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getEmail())) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getID() + "")) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getDepartment())) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getJobString())) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getJobTitle())) {
+                filteredEmps.add(e);
+            } else if (searchContent.equals(e.getSalary() + "")) {
+                filteredEmps.add(e);
+            }
+        }
+
+        Collections.sort(filteredEmps);
+
+        for(Employee employee : filteredEmps) {
             this.insertEmployeeTableRow(employee);
         }
-    }
 
-    private void goToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        if(filteredEmps.size() == 0 ){
+            Context context = getApplicationContext();
+            CharSequence text = "No results found!";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
     private void insertEmployeeTableRow(@NonNull Employee employee) {
@@ -116,31 +146,7 @@ public class EmployeeTableActivity extends AppCompatActivity {
 
         tableRow.addView(editButton);
 
-        this.employeeTable.addView(tableRow);
-    }
-
-    public void onLogout(View view) {
-        SessionInfo.logout(this);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void onSwitchSortMode(View view) {
-        int pos = this.spinner.getSelectedItemPosition();
-
-        Employee.setSortMode(pos, EmployeeSortModes.ASCENDING);
-        this.populateTable();
-    }
-
-    public void onAddEmployee(View view) {
-        if(SessionInfo.getLoginInfo() != null && SessionInfo.getLoginInfo().getAcessTier() < AccessTiers.TIER_2) {
-            Toast.makeText(this, "Only Tier " + AccessTiers.TIER_2 + " and above users can edit employee data", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Intent intent = new Intent(this, EmployeeEditActivity.class);
-        startActivity(intent);
+        this.table.addView(tableRow);
     }
 
     public void goToEmployeeEditActivity(@Nullable Employee employee) {
@@ -153,8 +159,7 @@ public class EmployeeTableActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToEmployeeSearchActivity(View view) {
-        Intent intent = new Intent(this, EmployeeSearchActivity.class);
-        startActivity(intent);
+    public void finish(View view){
+        finish();
     }
 }
