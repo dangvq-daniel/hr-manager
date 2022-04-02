@@ -25,7 +25,7 @@ public class Employees {
     }
 
     public static void removeEmployee(long id){
-        if(es.containsKey(id))
+        if(!es.containsKey(id))
             throw new IllegalArgumentException("There is no employee with id " + id);
 
         es.remove(id);

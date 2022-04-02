@@ -48,9 +48,11 @@ public class EmployeeEditActivity extends AppCompatActivity {
             }
 
             btnStr = R.string.edit_employee_btn;
+            findViewById(R.id.removeEmployee).setVisibility(View.VISIBLE);
         }
         else {
             btnStr = R.string.create_employee_btn;
+            findViewById(R.id.removeEmployee).setVisibility(View.GONE);
         }
 
         Button btn = findViewById(R.id.addEmployee);
@@ -119,5 +121,19 @@ public class EmployeeEditActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, EmployeeTableActivity.class);
         startActivity(intent);
+
+        this.finish();
+    }
+
+    public void onRemoveEmployee(View view) {
+        if(this.employee != null) {
+            Employees.removeEmployee(this.employee.getID());
+            Employees.saveEmployees(this);
+
+            Intent intent = new Intent(this, EmployeeTableActivity.class);
+            startActivity(intent);
+
+            this.finish();
+        }
     }
 }

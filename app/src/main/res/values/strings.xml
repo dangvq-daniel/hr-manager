@@ -27,4 +27,5 @@
     <string name="contact_btn">Contact</string>
     <string name="access_tier_btn">Access Tier</string>
     <string name="to_be_discussed_btn">To Be Discussed</string>
+    <string name="remove_employee_btn">Remove Employee</string>
 </resources>

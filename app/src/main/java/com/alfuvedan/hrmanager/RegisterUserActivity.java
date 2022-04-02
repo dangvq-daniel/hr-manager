@@ -1,6 +1,5 @@
 package com.alfuvedan.hrmanager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -56,19 +55,15 @@ public class RegisterUserActivity extends AppCompatActivity
             int accessTier = Integer.parseInt(this.accessTier.getText().toString());
 
             LoginInfo info = new LoginInfo(accessTier, email, passwd);
+
             LoginInfoSaver.loginAdd(info);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            LoginInfoSaver.saveLoginInfo(this);
+
+            this.finish();
         }
         catch(IllegalArgumentException e) {
             this.accessTier.setError("Access tier must be a number from 1 to " + AccessTiers.LAST_TIER);
         }
 
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        LoginInfoSaver.saveLoginInfo(this);
     }
 }
