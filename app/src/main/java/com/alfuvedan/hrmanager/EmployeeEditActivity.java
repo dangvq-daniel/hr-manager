@@ -118,10 +118,6 @@ public class EmployeeEditActivity extends AppCompatActivity {
         }
 
         Employees.saveEmployees(this);
-
-        Intent intent = new Intent(this, EmployeeTableActivity.class);
-        startActivity(intent);
-
         this.finish();
     }
 
@@ -129,9 +125,6 @@ public class EmployeeEditActivity extends AppCompatActivity {
         if(this.employee != null) {
             Employees.removeEmployee(this.employee.getID());
             Employees.saveEmployees(this);
-
-            Intent intent = new Intent(this, EmployeeTableActivity.class);
-            startActivity(intent);
 
             this.finish();
         }

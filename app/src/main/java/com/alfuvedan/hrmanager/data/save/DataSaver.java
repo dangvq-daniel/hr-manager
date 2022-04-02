@@ -18,7 +18,7 @@ public class DataSaver {
             StringBuilder dataRow = new StringBuilder();
 
             for(int i = 0; i < strVals.length; i++) {
-                dataRow.append(strVals[i]);
+                dataRow.append(strVals[i].replaceAll(",", ""));
                 dataRow.append(i < strVals.length - 1 ? ',' : '\n');
             }
 
