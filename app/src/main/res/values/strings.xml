@@ -22,7 +22,7 @@
     <string name="department_hint">Department</string>
     <string name="title_hint">Job Title</string>
     <string name="salary_hint">Salary ($)</string>
-    <string name="enter_an_employee">Enter an Employee…</string>
+    <string name="enter_an_employee">Enter Employee Details</string>
     <string name="back">BACK</string>
     <string name="contact_btn">Contact</string>
     <string name="access_tier_btn">Access Tier</string>
