@@ -29,9 +29,6 @@ public class EmployeeTableActivity extends AppCompatActivity {
         SessionInfo.loadSessionData(this);
         Employees.getEmployeesFromFile(this);
 
-        if(!SessionInfo.isLoggedIn())
-            this.goToMainActivity();
-
         this.employeeTable = findViewById(R.id.employeeTable);
         this.populateTable();
 
@@ -44,6 +41,17 @@ public class EmployeeTableActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SessionInfo.loadSessionData(this);
+        if(!SessionInfo.isLoggedIn())
+            this.finish();
+
+        this.populateTable();
+    }
+
     private void populateTable() {
         this.employeeTable.removeAllViews();
 
@@ -53,11 +61,6 @@ public class EmployeeTableActivity extends AppCompatActivity {
         for(Employee employee : employees) {
             this.insertEmployeeTableRow(employee);
         }
-    }
-
-    private void goToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     private void insertEmployeeTableRow(@NonNull Employee employee) {

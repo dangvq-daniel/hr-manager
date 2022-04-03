@@ -70,5 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void goToEmployeeTableActivity() {
         Intent intent = new Intent(this, EmployeeTableActivity.class);
         startActivity(intent);
+
+        this.finish();
     }
 }
